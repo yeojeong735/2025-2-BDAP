@@ -1,4 +1,4 @@
-your_book = [2002, '파이썬', 200]
+your_book = [2002,'파이썬','파이썬','파이썬',200]
 print(your_book)
 print(type(your_book))
 

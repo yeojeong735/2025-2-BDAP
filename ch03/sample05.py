@@ -2,7 +2,13 @@ my_book = (2002, '파이썬', 200, '1교시')
 your_book = [2002, '파이썬', 200, '1교시']
 #               0       1     2       3
 
-other_book = your_book
+#other_book = [your_book[0], your_book[1], your_book[2]]
+other_book = your_book[0:4]
+#other_book3 = your_book[:]
+
+#print(other_book2)
+#print(other_book3)
+
 new_book = your_book[1:3]
 
 print('new:', new_book)
