@@ -621,5 +621,7 @@ find_text = '보강일:'
 for k,v in data.items():
     sj = v['sj']
     exsit_yn = sj.find(find_text) > 0
-    if exsit_yn:
-        print(f'{v['bgnde']}: {sj}')
+    # 1. sj.find(find_text) - 문자열 내에서 find_text가 처음 나타나는 위치 찾아 반환
+    # 2. 찾으면 0이상, 못 찾으면 -1
+    if exsit_yn: # 3. 찾으면 true, 못 찾으면 false
+        print(f"{v['bgnde']}: {sj}") # <- 바깥과 안 따옴표 다르게 쓰기
