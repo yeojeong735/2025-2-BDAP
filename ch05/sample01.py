@@ -1,7 +1,40 @@
 import pandas as pd
 import os
 
-covid_file_name = './data/owid-covid-data.csv'
+covid_file_name = '../ch04/data/owid-covid-data.csv'
 raw_df = pd.read_csv(covid_file_name, sep = ',')
 
-# data 칼럼을 index로 지정
+selected_columns = ['iso_code','location','date','total_cases','population']
+selected_df = raw_df[selected_columns]
+kor_df = selected_df[selected_df['location'] == 'South Korea']
+
+# data 칼럼을 index로 지정'
+index_name = 'date'
+kor_index_df = kor_df.set_index(index_name)
+print('='*50)
+print(kor_index_df.head())
+
+# 대한민국 코로나 데이터 저장
+kor_covid_file_name = './data/covid_kor.csv'
+
+if os.path.exists(kor_covid_file_name): # <- 해당 변수에 저장된 경로에 파일이나 폴더가 실제로 존재하는지 확인하고 있으면 삭제
+    os.remove(kor_covid_file_name)
+
+kor_index_df.to_csv(kor_covid_file_name)
+#kor_index_df.to_csv(kor_covid_file_name, sep='|', encoding='utf-8')
+#kor_index_df.to_csv(kor_covid_file_name, encoding='utf-8', sep='|')
+
+# 미국 코로나 발생 데이터 -> df(usa_index_df) (실습)
+usa_df = selected_df[selected_df['iso_code'] == 'USA']
+print('='*50)
+print(usa_df.head())
+
+# USA 데이터에 index 지정
+usa_index_df = usa_df.set_index(index_name)
+print('='*50)
+print(usa_index_df.head())
+
+usa_covid_file_name = './data/usa_us.csv'
+if os.path.exists(usa_covid_file_name):
+    os.remove(usa_covid_file_name)
+usa_index_df.to_csv(usa_covid_file_name)
