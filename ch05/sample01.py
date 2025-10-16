@@ -34,7 +34,7 @@ usa_index_df = usa_df.set_index(index_name)
 print('='*50)
 print(usa_index_df.head())
 
-usa_covid_file_name = './data/usa_us.csv'
+usa_covid_file_name = './data/covid_usa.csv'
 if os.path.exists(usa_covid_file_name):
     os.remove(usa_covid_file_name)
 usa_index_df.to_csv(usa_covid_file_name)
